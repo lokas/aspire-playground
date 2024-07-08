@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\TestShared\TestShared.csproj" />
+        <ProjectReference Include="..\AspireStarterApplicaitonPlayground.ServiceDefaults\AspireStarterApplicaitonPlayground.ServiceDefaults.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+    </ItemGroup>
+
+</Project>
