@@ -13,6 +13,8 @@
 
     <ItemGroup>
       <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+      <PackageReference Include="Aspire.Npgsql" Version="8.0.2" />
+      <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
     </ItemGroup>
 
 </Project>

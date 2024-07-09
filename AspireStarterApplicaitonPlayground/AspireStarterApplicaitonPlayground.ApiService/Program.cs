@@ -1,5 +1,4 @@
 using AspireStarterApplicaitonPlayground.ApiService.Data;
-using TestShared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +8,11 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
-builder.AddSqlServerDbContext<TestData>(Database.SqlDbName);
+//builder.AddSqlServerDbContext<TestData>(Database.SqlDbName);
+
+//builder.add postGressDb
+builder.AddNpgsqlDataSource("postGressDb");
+builder.AddNpgsqlDbContext<TestDataDbContext>("postGressDb");
 
 var app = builder.Build();
 
@@ -34,6 +37,11 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 });
 
+app.MapGet("/postgres", async (TestDataDbContext db) =>
+{
+    var x = await db.TestEfTable.FindAsync(1);
+    return x.Text;
+});
 app.MapDefaultEndpoints();
 
 app.Run();
