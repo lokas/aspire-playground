@@ -11,4 +11,9 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Scripts\Script0001_Init.sql" />
+      <EmbeddedResource Include="Scripts\Script0001_Init.sql" />
+    </ItemGroup>
 </Project>

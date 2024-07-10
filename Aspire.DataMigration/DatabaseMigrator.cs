@@ -7,6 +7,7 @@ public class DatabaseMigrator(PostGresConnection postGresConnection, ILogger<Dat
 
     public async void ExecuteMigrations()
     {
+        _log.LogInformation("Starting db migration: {time}", DateTimeOffset.Now);
         _log.LogWarning("ops");
     }
 }

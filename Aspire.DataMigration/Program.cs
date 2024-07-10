@@ -8,10 +8,11 @@ string? conStr = builder.Configuration["ConnectionStrings:postGressDb"];
 builder.Services.AddSingleton<DatabaseMigrator>();
 builder.Services.AddSingleton<PostGresConnection>(p => new PostGresConnection(conStr));
 
+
+var host = builder.Build();
 try
 {
-    var host = builder.Build();
-    host.Run();
+    await host.RunAsync();
 }
 catch (Exception e)
 {
