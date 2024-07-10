@@ -7,12 +7,12 @@
         <Nullable>enable</Nullable>
         <IsAspireHost>true</IsAspireHost>
         <UserSecretsId>5DCA3C60-CFBD-433D-AAFB-77335F888061</UserSecretsId>
+        <RootNamespace>AspireStarterApplicaitonPlayground.AppHost</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\TestShared\TestShared.csproj" />
-        <ProjectReference Include="..\AspireStarterApplicaitonPlayground.ApiService\AspireStarterApplicaitonPlayground.ApiService.csproj"/>
-        <ProjectReference Include="..\AspireStarterApplicaitonPlayground.Web\AspireStarterApplicaitonPlayground.Web.csproj"/>
+    <ItemGroup>      
+        <ProjectReference Include="..\Aspire.ApiService\Aspire.ApiService.csproj" />
+        <ProjectReference Include="..\Aspire.Web\Aspire.Web.csproj" />
     </ItemGroup>
 
     <ItemGroup>

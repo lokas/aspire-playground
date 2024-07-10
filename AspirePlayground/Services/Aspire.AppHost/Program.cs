@@ -23,11 +23,11 @@ var postGress = builder.AddPostgres("postGressRes", password: psqlPass)
 var postDb = postGress.AddDatabase("postGressDb");
 
 var apiService = builder
-    .AddProject<AspireStarterApplicaitonPlayground_ApiService>("apiservice")
+    .AddProject<Aspire_ApiService>("apiservice")
     .WithReference(postDb);
    
 
-builder.AddProject<AspireStarterApplicaitonPlayground_Web>("webfrontend")
+builder.AddProject<Aspire_Web>("webfrontend")
     .WithExternalHttpEndpoints()
     .WithReference(cache)
     .WithReference(apiService);

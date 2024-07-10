@@ -6,9 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\TestShared\TestShared.csproj" />
-        <ProjectReference Include="..\AspireStarterApplicaitonPlayground.ServiceDefaults\AspireStarterApplicaitonPlayground.ServiceDefaults.csproj"/>
+    <ItemGroup>        
+        <ProjectReference Include="..\Aspire.ServiceDefaults\Aspire.ServiceDefaults.csproj" />
     </ItemGroup>
 
     <ItemGroup>

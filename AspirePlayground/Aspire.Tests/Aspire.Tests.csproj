@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
+        <RootNamespace>AspireStarterApplicaitonPlayground.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AspireStarterApplicaitonPlayground.AppHost\AspireStarterApplicaitonPlayground.AppHost.csproj"/>
+        <ProjectReference Include="..\Aspire.AppHost\Aspire.AppHost.csproj" />
     </ItemGroup>
 
     <ItemGroup>

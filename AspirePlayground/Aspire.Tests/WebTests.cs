@@ -9,7 +9,7 @@ public class WebTests
     {
         // Arrange
         var appHost = await DistributedApplicationTestingBuilder
-            .CreateAsync<Projects.AspireStarterApplicaitonPlayground_AppHost>();
+            .CreateAsync<Projects.Aspire_AppHost>();
         await using var app = await appHost.BuildAsync();
         await app.StartAsync();
 

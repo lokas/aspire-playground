@@ -4,10 +4,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>AspireStarterApplicaitonPlayground.Web</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AspireStarterApplicaitonPlayground.ServiceDefaults\AspireStarterApplicaitonPlayground.ServiceDefaults.csproj"/>
+      <ProjectReference Include="..\Aspire.ServiceDefaults\Aspire.ServiceDefaults.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace AspireStarterApplicaitonPlayground.ApiService.Data;
+namespace Aspire.ApiService.Data;
 
 public class TestDataDbContext(DbContextOptions options) : DbContext(options)
 {
-    public DbSet<TestEfTable> TestEfTable { get; set; }
+    public DbSet<TestEfTable> TestEfTable { get; init; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TestEfTable>().Property(p => p.Id)

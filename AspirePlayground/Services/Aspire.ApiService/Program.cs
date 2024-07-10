@@ -1,4 +1,4 @@
-using AspireStarterApplicaitonPlayground.ApiService.Data;
+using Aspire.ApiService.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
