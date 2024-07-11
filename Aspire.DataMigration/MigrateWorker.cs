@@ -1,16 +1,11 @@
-namespace WorkerService1;
+using Migration;
 
-public class MigrateWorker(DatabaseMigrator migrator) : BackgroundService
+public class MigrateWorker(DatabaseMigrator migrator, CancellationTokenSource cts) : BackgroundService
 {
-    private readonly DatabaseMigrator _migrator = migrator;
-
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            
-
-            await Task.Delay(1000, stoppingToken);
-        }
+        migrator.ExecuteMigrations();
+        cts.Cancel();
+        return Task.CompletedTask;
     }
 }

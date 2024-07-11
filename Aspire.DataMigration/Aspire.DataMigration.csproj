@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="dbup-postgresql" Version="5.0.40" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
     </ItemGroup>
 

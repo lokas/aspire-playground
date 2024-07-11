@@ -2,7 +2,8 @@ using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var cache = builder.AddRedis("cache");
+var cache = builder.AddRedis("cache")
+    .WithEndpoint(63922, 6379);
 
 var psqlPass = builder.AddParameter("psql-pass", secret: true);
 //var sqlPassword = builder.AddParameter("sql-password", secret: true);
@@ -14,18 +15,22 @@ var psqlPass = builder.AddParameter("psql-pass", secret: true);
 //     .AddDatabase("SqlAspire"); // this is strange you can not reference class lib does not recognise it 
 
 //hm there was some class with naming of resource postgres and default db it created 
-var postGress = builder.AddPostgres("postGressRes", password: psqlPass)
+//builder.AddPostgres()
+var postGres = builder.AddPostgres("postGressRes", password: psqlPass)
     //.WithEnvironment() // username, sqlPassword
-    .WithDataVolume()
+    //.WithDataBindMount("./data/postgres")
+    //.WithBindMount("/data/postgres", "/var/lib/postgresql/data")
+   // .WithEndpoint(63925, 5432)
     .WithPgAdmin();
-    //.WithEnvironment("PGUSER", "postgres");
+  //  .WithEndpoint(63926, 80);
+//.WithEnvironment("PGUSER", "postgres");
 
-var postDb = postGress.AddDatabase("postGressDb");
+var postDb = postGres.AddDatabase("postGressDb");
 
 var apiService = builder
     .AddProject<Aspire_ApiService>("apiservice")
     .WithReference(postDb);
-   
+
 
 builder.AddProject<Aspire_Web>("webfrontend")
     .WithExternalHttpEndpoints()
