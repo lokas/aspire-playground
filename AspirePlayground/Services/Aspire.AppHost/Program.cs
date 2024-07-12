@@ -18,7 +18,7 @@ var psqlPass = builder.AddParameter("psql-pass", secret: true);
 //builder.AddPostgres()
 var postGres = builder.AddPostgres("postGressRes", password: psqlPass)
     //.WithEnvironment() // username, sqlPassword
-    //.WithDataBindMount("./data/postgres")
+    .WithDataVolume() //turns out it does not like when u add volume very annoying 
     //.WithBindMount("/data/postgres", "/var/lib/postgresql/data")
    // .WithEndpoint(63925, 5432)
     .WithPgAdmin();
