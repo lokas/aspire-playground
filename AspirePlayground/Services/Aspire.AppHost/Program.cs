@@ -2,30 +2,23 @@ using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-var cache = builder.AddRedis("cache")
-    .WithEndpoint(63922, 6379);
-
 var psqlPass = builder.AddParameter("psql-pass", secret: true);
-//var sqlPassword = builder.AddParameter("sql-password", secret: true);
-
-
-// var sqlDb = builder.AddSqlServer("sqlServerRes", password: sqlPassword)
-//     .WithDataVolume()
-//     //.WithEndpoint()
-//     .AddDatabase("SqlAspire"); // this is strange you can not reference class lib does not recognise it 
+var psqlPort = builder.AddParameter("psql-port");
 
 //hm there was some class with naming of resource postgres and default db it created 
 //builder.AddPostgres()
 var postGres = builder.AddPostgres("postGressRes", password: psqlPass)
     //.WithEnvironment() // username, sqlPassword
-    .WithDataVolume() //turns out it does not like when u add volume very annoying 
-    //.WithBindMount("/data/postgres", "/var/lib/postgresql/data")
-   // .WithEndpoint(63925, 5432)
+    .WithDataVolume() //turns out it does not like when u add volume very annoying
+    // below is annoying as well, if you create binding without your name you got 2 tcp and then it throws an error with 
+    //our own name it works it binds to the same port 
+    .WithEndpoint(port: int.Parse(psqlPort.Resource.Value), targetPort: 5432, name:"mybindings")
     .WithPgAdmin();
-  //  .WithEndpoint(63926, 80);
-//.WithEnvironment("PGUSER", "postgres");
 
 var postDb = postGres.AddDatabase("postGressDb");
+
+var cache = builder.AddRedis("cache");
+
 
 var apiService = builder
     .AddProject<Aspire_ApiService>("apiservice")

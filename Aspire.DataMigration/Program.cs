@@ -15,7 +15,7 @@ if(conStr == null)
 
 builder.Services.AddSingleton<DatabaseMigrator>();
 builder.Services.AddSingleton<PostGresConnection>(_ => new PostGresConnection(conStr));
-builder.Services.AddSingleton<CancellationTokenSource>(_ = cts);
+builder.Services.AddSingleton(_ = cts);
 
 var host = builder.Build();
 try
